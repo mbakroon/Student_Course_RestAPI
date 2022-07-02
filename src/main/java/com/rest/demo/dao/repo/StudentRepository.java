@@ -23,6 +23,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 		public List<Student> findAllByOrderByFirstNameDesc();
 		
+		
 		@Query("SELECT s FROM Student s WHERE s.firstName LIKE %?1%")
 		public List<Student> findAllLike(String name);
 		

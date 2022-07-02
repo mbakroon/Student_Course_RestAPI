@@ -1,7 +1,7 @@
 package com.rest.demo.service;
 
-
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -100,27 +100,42 @@ public class StudentServiceImpl implements StudentService {
 		}
 
 	}
-
 	
+	ArrayList<Course> copie ;
+
 	public Student StudentWithCourse(StudentRequest studentRequest) {
 
 		Optional<Student> studentFromDb = studentRepository.findById(studentRequest.getId());
-		System.out.println("id: " + studentRequest.getId());
-		Student theStudent = null;
+		//System.out.println("id: " + studentRequest.getId());
+		Student theStudent = null ;
 
 		// check if Student exist in DB and get it
-		if (studentFromDb.isPresent())
+	
+		if (studentFromDb.isPresent()) {
 			theStudent = studentFromDb.get();
+		}
+//			copie = new ArrayList<>(theStudent.getCourses());
+//			
+//			for (Course course : copie) {
+//				System.out.println("The Course ist now : " + course);
+//			}
+			
+			ListOfStudentCources = new HashSet<Course>(theStudent.getCourses());
+//			for (Course course : ListOfStudentCources) {
+//				System.out.println("the course: " + course.getName());
+//			}
 
-		ListOfStudentCources = new HashSet<Course>();
-		for (int courseId : studentRequest.getCourseId()) {
-			Optional<Course> course = courseRepository.findById(courseId);
+			for (int courseId : studentRequest.getCourseId()) {
+				Optional<Course> course = courseRepository.findById(courseId);
+
+				// check if course exist
+				if (course.isPresent()) {
+					System.out.println("cours is present: " + course.isPresent());
+					ListOfStudentCources.add(course.get());
+				}
+			}
 
 		
-			if (course.isPresent())
-				System.out.println("cours is present: " + course.isPresent());
-			ListOfStudentCources.add(course.get());
-		}
 
 		return theStudent;
 	}
@@ -130,13 +145,10 @@ public class StudentServiceImpl implements StudentService {
 
 		Student theStudent = StudentWithCourse(studentRequest);
 
-		if (theStudent != null) {
-			theStudent.setCourses(ListOfStudentCources);
+			theStudent.setCourses((Set<Course>) ListOfStudentCources);
 
 			return studentRepository.save(theStudent);
-		}
-		return theStudent;
-
+		
 	}
 
 	@Override
@@ -170,7 +182,7 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> getStudentCourse() {
 
 		TypedQuery<Student> query = (TypedQuery<Student>) entityManager.createQuery(
-				"SELECT new com.rest.demo.pojos.StudentCourseResponse (s.id , c.name) FROM Student s JOIN s.courses c");
+				"SELECT new com.rest.demo.pojos.StudentRequest(s.id , c.id) FROM Student s JOIN s.courses c");
 
 		List<Student> results = query.getResultList();
 
@@ -213,17 +225,10 @@ public class StudentServiceImpl implements StudentService {
 //		return results;
 //
 //	}
-	
-	
-	
-	public List<Student> returnlist(){
+
+	public List<Student> returnlist() {
 //		return studentRepository.getAllStudents();
 		return studentRepository.findAll();
 	}
-	
-	
-	
-	
-	
 
 }
