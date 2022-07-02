@@ -101,29 +101,6 @@ public class StudentServiceImpl implements StudentService {
 
 	}
 
-//	public Student StudentWithCourse(StudentRequest studentRequest) {
-//
-//		Optional<Student> studentFromDb = studentRepository.findById(studentRequest.getId());
-//		System.out.println("id: " + studentRequest.getId());
-//		Student theStudent = null;
-//
-//		// check if Student exist in DB and get it
-//		if (studentFromDb.isPresent())
-//			theStudent = studentFromDb.get();
-//
-//		ListOfStudentCources = new HashSet<Course>();
-//		for (Course course : studentRequest.getCourses()) {
-//			System.out.println("course id :" + course.getId());
-//			
-//			Optional<Course> theCourse = courseRepository.findById(course.getId());
-//
-//			if (theCourse.isPresent())
-//				System.out.println("cours is present: " + theCourse.isPresent());
-//			ListOfStudentCources.add(theCourse.get());
-//		}
-//
-//		return theStudent;
-//	}
 	
 	public Student StudentWithCourse(StudentRequest studentRequest) {
 

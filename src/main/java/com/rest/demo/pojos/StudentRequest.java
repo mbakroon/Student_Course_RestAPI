@@ -16,10 +16,6 @@ public class StudentRequest {
 	private ArrayList<Integer> courseId;
 
 
-//	public StudentRequest(int id, Set<Course> courses) {
-//		this.id = id;
-//		this.courses = courses;
-//	}
 	
 	public StudentRequest(int id, ArrayList<Integer>courseId) {
 		this.id = id;
