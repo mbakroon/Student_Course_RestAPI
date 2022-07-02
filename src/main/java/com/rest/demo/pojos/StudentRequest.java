@@ -10,12 +10,11 @@ public class StudentRequest {
 	//Student DI
 	private int id;
 		
-
-	private Set<Course> courses;
-	
 	private ArrayList<Integer> courseId;
 
 
+	//private Set<Course> courses;
+	
 	
 	public StudentRequest(int id, ArrayList<Integer>courseId) {
 		this.id = id;
@@ -34,14 +33,14 @@ public class StudentRequest {
 
 
 
-	public Set<Course> getCourses() {
-		return courses;
-	}
-
-
-	public void setCourses(Set<Course> courses) {
-		this.courses = courses;
-	}
+//	public Set<Course> getCourses() {
+//		return courses;
+//	}
+//
+//
+//	public void setCourses(Set<Course> courses) {
+//		this.courses = courses;
+//	}
 
 
 	public ArrayList<Integer> getCourseId() {

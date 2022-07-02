@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 
 import com.rest.demo.entity.Student;
+import com.rest.demo.pojos.StudentCourseResponse;
 import com.rest.demo.pojos.StudentRequest;
 
 public interface StudentService {
@@ -19,9 +20,12 @@ public interface StudentService {
 
 	public void deleteById(int studentId);
 
-	public Student addCourseToStudent(StudentRequest studentRequest);
+	public Student addCourseToStudent(StudentCourseResponse studentCourseResponse);
 
-	public Student removeCourseFromStudent(StudentRequest studentRequest);
+	public Student removeAllCourseFromStudent(StudentCourseResponse studentCourseResponse);
+	
+	public Student removeOneCourseFromStudent(StudentCourseResponse studentCourseResponse) ;
+
 
 	public List<Student> getStudentCourse();
 

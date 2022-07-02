@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rest.demo.entity.Student;
 import com.rest.demo.error.StudentErrorResponse;
 import com.rest.demo.error.StudentNotFoundException;
+import com.rest.demo.pojos.StudentCourseResponse;
 import com.rest.demo.pojos.StudentRequest;
 import com.rest.demo.service.StudentService;
 
@@ -35,17 +36,17 @@ public class StudentRestController {
 	}
 	
 	@PostMapping("/addCourseToStudent")
-	public Student addCourseToStudent(@RequestBody StudentRequest studentRequest) {
+	public Student addCourseToStudent(@RequestBody StudentCourseResponse studentCourseResponse) {
 		
-		return studentService.addCourseToStudent(studentRequest);
+		return studentService.addCourseToStudent(studentCourseResponse);
 		
 	}
 	
 	@PostMapping("/removeCourseFromStudent")
-	public Student removeCourseFromStudent(@RequestBody StudentRequest studentRequest) {
+	public Student removeCourseFromStudent(@RequestBody StudentCourseResponse studentCourseResponse) {
 		
 		
-		return studentService.removeCourseFromStudent(studentRequest);
+		return studentService.removeCourseFromStudent(studentCourseResponse);
 	}
 	
 //	@PostMapping("/removeCourseFromStudent")

@@ -3,6 +3,7 @@ package com.rest.demo.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -14,10 +15,12 @@ import javax.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.util.ArrayIterator;
 import com.rest.demo.dao.repo.CourseRepository;
 import com.rest.demo.dao.repo.StudentRepository;
 import com.rest.demo.entity.Course;
 import com.rest.demo.entity.Student;
+import com.rest.demo.pojos.StudentCourseResponse;
 import com.rest.demo.pojos.StudentRequest;
 
 @Service
@@ -100,61 +103,50 @@ public class StudentServiceImpl implements StudentService {
 		}
 
 	}
-	
-	ArrayList<Course> copie ;
 
-	public Student StudentWithCourse(StudentRequest studentRequest) {
+	public Student StudentWithCourse(StudentCourseResponse studentCourseResponse) {
 
-		Optional<Student> studentFromDb = studentRepository.findById(studentRequest.getId());
-		//System.out.println("id: " + studentRequest.getId());
-		Student theStudent = null ;
+		Student theStudent = null;
+
+		Optional<Student> studentFromDb = studentRepository.findById(studentCourseResponse.getId());
 
 		// check if Student exist in DB and get it
-	
 		if (studentFromDb.isPresent()) {
 			theStudent = studentFromDb.get();
 		}
-//			copie = new ArrayList<>(theStudent.getCourses());
-//			
-//			for (Course course : copie) {
-//				System.out.println("The Course ist now : " + course);
-//			}
-			
-			ListOfStudentCources = new HashSet<Course>(theStudent.getCourses());
-//			for (Course course : ListOfStudentCources) {
-//				System.out.println("the course: " + course.getName());
-//			}
 
-			for (int courseId : studentRequest.getCourseId()) {
-				Optional<Course> course = courseRepository.findById(courseId);
+		ListOfStudentCources = new HashSet<Course>();
+		for (Course course : theStudent.getCourses()) {
+			ListOfStudentCources.add(course);
+		}
 
-				// check if course exist
-				if (course.isPresent()) {
-					System.out.println("cours is present: " + course.isPresent());
-					ListOfStudentCources.add(course.get());
-				}
+		for (int courseId : studentCourseResponse.getCourseId()) {
+			Optional<Course> course = courseRepository.findById(courseId);
+
+			if (course.isPresent()) {
+				ListOfStudentCources.add(course.get());
 			}
+		}
 
-		
-
-		return theStudent;
+		return studentFromDb.get();
 	}
 
 	@Override
-	public Student addCourseToStudent(StudentRequest studentRequest) {
+	public Student addCourseToStudent(StudentCourseResponse studentCourseResponse) {
+		System.out.println("Enter addCourseToStudent Method");
 
-		Student theStudent = StudentWithCourse(studentRequest);
+		Student theStudent = StudentWithCourse(studentCourseResponse);
 
-			theStudent.setCourses((Set<Course>) ListOfStudentCources);
+		theStudent.setCourses(ListOfStudentCources);
 
-			return studentRepository.save(theStudent);
-		
+		return studentRepository.save(theStudent);
+
 	}
 
 	@Override
-	public Student removeCourseFromStudent(StudentRequest studentRequest) {
+	public Student removeAllCourseFromStudent(StudentCourseResponse studentCourseResponse) {
 
-		Student theStudent = StudentWithCourse(studentRequest);
+		Student theStudent = StudentWithCourse(studentCourseResponse);
 
 //		int studentId = studentRequest.getId();
 //		int courseId = studentRequest.getId();
@@ -174,6 +166,25 @@ public class StudentServiceImpl implements StudentService {
 
 		return studentRepository.save(theStudent);
 	}
+	
+	@Override
+	public Student removeOneCourseFromStudent(StudentCourseResponse studentCourseResponse) {
+
+		Student theStudent = StudentWithCourse(studentCourseResponse);
+		Iterator<Course> courseId = ListOfStudentCources.iterator();
+
+		if (theStudent != null) {
+			
+			while (courseId.hasNext()) {
+				//theStudent.re
+				
+			}
+
+
+		}
+
+		return studentRepository.save(theStudent);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -182,7 +193,7 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> getStudentCourse() {
 
 		TypedQuery<Student> query = (TypedQuery<Student>) entityManager.createQuery(
-				"SELECT new com.rest.demo.pojos.StudentRequest(s.id , c.id) FROM Student s JOIN s.courses c");
+				"SELECT new com.rest.demo.pojos.StudentCourseResponse(s.studentId , c.courseName) FROM Student s JOIN s.courses c");
 
 		List<Student> results = query.getResultList();
 

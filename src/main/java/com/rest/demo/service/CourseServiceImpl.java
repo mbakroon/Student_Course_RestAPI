@@ -113,7 +113,7 @@ public class CourseServiceImpl implements CourseService {
 			Optional<Student> theStudent = studentRepository.findById(student.getId());
 
 			if (theStudent.isPresent())
-				System.out.println("cours is present: " + theStudent.isPresent());
+				System.out.println("cours isss present: " + theStudent.isPresent());
 			listOfCoursesStudent.add(theStudent.get());
 		}
 
