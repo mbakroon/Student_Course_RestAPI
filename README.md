@@ -1,1 +1,2 @@
-# Student_Course_RestAPI
+# thymeleaf-students-course-rest-demo
+ 
