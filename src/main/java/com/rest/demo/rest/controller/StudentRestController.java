@@ -42,11 +42,11 @@ public class StudentRestController {
 		
 	}
 	
-	@PostMapping("/removeCourseFromStudent")
-	public Student removeCourseFromStudent(@RequestBody StudentCourseResponse studentCourseResponse) {
+	@PostMapping("/removeAllCourseFromStudent")
+	public Student removeAllCourseFromStudent(@RequestBody StudentCourseResponse studentCourseResponse) {
 		
 		
-		return studentService.removeCourseFromStudent(studentCourseResponse);
+		return studentService.removeAllCourseFromStudent(studentCourseResponse);
 	}
 	
 //	@PostMapping("/removeCourseFromStudent")
