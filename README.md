@@ -34,8 +34,6 @@
     spring.jpa.generate-ddl=true
     spring.jpa.show-sql=true
 
-```
-```
 4. Starten das Progaram als Java Application
 
 
