@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.rest.demo.entity.Student;
 import com.rest.demo.error.StudentErrorResponse;
 import com.rest.demo.error.StudentNotFoundException;
 import com.rest.demo.pojos.StudentCourseResponse;
-import com.rest.demo.pojos.StudentRequest;
 import com.rest.demo.service.StudentService;
 
 @RestController

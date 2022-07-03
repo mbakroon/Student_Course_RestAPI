@@ -1,9 +1,7 @@
 package com.rest.demo.pojos;
 
 import java.util.ArrayList;
-import java.util.Set;
 
-import com.rest.demo.entity.Course;
 
 public class StudentRequest {
 	

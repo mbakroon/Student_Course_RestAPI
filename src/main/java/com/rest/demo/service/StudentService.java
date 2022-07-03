@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.rest.demo.entity.Student;
 import com.rest.demo.pojos.StudentCourseResponse;
-import com.rest.demo.pojos.StudentRequest;
 
 public interface StudentService {
 

@@ -4,17 +4,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import com.rest.demo.dao.repo.CourseRepository;
 import com.rest.demo.dao.repo.StudentRepository;
 import com.rest.demo.entity.Course;
@@ -105,7 +101,6 @@ public class CourseServiceImpl implements CourseService {
 		System.out.println(courseFromDb.isPresent());
 		if (courseFromDb.isPresent())
 			theCourse = courseFromDb.get();
-			System.out.println("CourseName: " + theCourse.getName());
 
 		listOfCoursesStudent = new HashSet<Student>();
 		for (Student student : courseRequest.getListOfStudent()) {

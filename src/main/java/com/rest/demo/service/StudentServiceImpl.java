@@ -1,27 +1,20 @@
 package com.rest.demo.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.databind.util.ArrayIterator;
 import com.rest.demo.dao.repo.CourseRepository;
 import com.rest.demo.dao.repo.StudentRepository;
 import com.rest.demo.entity.Course;
 import com.rest.demo.entity.Student;
 import com.rest.demo.pojos.StudentCourseResponse;
-import com.rest.demo.pojos.StudentRequest;
 
 @Service
 public class StudentServiceImpl implements StudentService {
