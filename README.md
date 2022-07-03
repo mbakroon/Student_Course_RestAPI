@@ -1,11 +1,11 @@
 # thymeleaf-students-course-rest-demo
  
- Dies ist ein Backend-System zur Verwaltung Studenten und Ihre Kurse
+**Das ist ein Backend-System zur Verwaltung Studenten und Ihre Kurse
 
-Dieses System kann verwendet werden, um die folgenden Daten zu verwalten:
+**Das System kann verwendet werden, um die folgenden Daten zu verwalten:
 
-Studentendaten
-Kurse
+-Studentendaten
+-Kurse
 
 Verfügbare Funktionen:
 
@@ -16,9 +16,9 @@ Verschlüsselungsfunktionen einiger sensibler Daten beim Speichern in Datenbanke
 
 Verwendete Technologien:
 
-Java
-Spring Boot
-MySQL-Datenbanken
+-Java
+-Spring Boot
+-MySQL-Datenbanken
 
 Autoren
 
