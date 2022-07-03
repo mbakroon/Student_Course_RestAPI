@@ -1,3 +1,5 @@
+
+  
 # thymeleaf-students-course-rest-demo
  
 **Das ist ein Backend-System zur Verwaltung Studenten und Ihre Kurse kann verwendet werden, um die folgenden Daten zu verwalten:**
@@ -34,8 +36,6 @@
     spring.jpa.generate-ddl=true
     spring.jpa.show-sql=true
 
-```
-```
 4. Starten das Progaram als Java Application
 
 
