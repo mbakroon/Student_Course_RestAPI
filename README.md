@@ -37,7 +37,7 @@
 
 #Das Projekt enthält folgende Route: 
   
-    ```
+    
     @RequestMapping("/api")
     @GetMapping("/courses")
     
