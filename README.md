@@ -37,6 +37,29 @@
     spring.jpa.show-sql=true
 
 4. Starten das Progaram als Java Application
+  
+  ```
+    @RequestMapping("/api")
+    @GetMapping("/courses")
+    @GetMapping("/courses/findSorted/{field}") #sortier nach Attribute (id,name,SerialNummer)
+    @GetMapping("/courses/pagination/{offSet}/{pageSize}") #Zeigen bestimmte einträge 
+    @GetMapping("/courses/pagination/{offSet}/{pageSize}/{field}") #Zeigen bestimmer einträge sortiert nach field
+    @PostMapping("courses/addCourses")
+    @PostMapping("/addStudentToCourse")
+    @PostMapping("/removeStudentFromCourse")
+
+    @GetMapping("/students")
+    @GetMapping("/studentsLike/{partName}") #suchen studenten = teilWort 
+    @PostMapping("/student")
+    @PutMapping("/student")
+    @DeleteMapping("delete/{StudentId}")
+    @GetMapping("/getStudentCourse")
+    @GetMapping("/orderByEmail/{email}")
+    @GetMapping("/getFirstLastNameAndCourses")
+    @GetMapping("/getTest")
+    @PostMapping("/addCourseToStudent")
+    @PostMapping("/removeAllCourseFromStudent")
+
 
 
 # Autor
