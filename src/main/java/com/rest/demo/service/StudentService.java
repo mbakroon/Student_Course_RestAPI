@@ -23,7 +23,7 @@ public interface StudentService {
 
 	public Student removeAllCourseFromStudent(StudentCourseResponse studentCourseResponse);
 	
-	public Student removeOneCourseFromStudent(StudentCourseResponse studentCourseResponse) ;
+	public Student removeSomeCourseFromStudent(StudentCourseResponse studentCourseResponse) ;
 
 
 	public List<Student> getStudentCourse();

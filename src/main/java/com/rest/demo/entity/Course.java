@@ -59,20 +59,18 @@ public class Course {
 
 
 
-	
-
 	// add a convenience method
 
-	public void addStudent(Student theStudent) {
-		
-		this.students.add(theStudent);
-		
-		if (students == null) {
-			students = new HashSet<>();
-		}
-
-		students.add(theStudent);
-	}
+//	public void addStudent(Student theStudent) {
+//		
+//		this.students.add(theStudent);
+//		
+//		if (students == null) {
+//			students = new HashSet<>();
+//		}
+//
+//		students.add(theStudent);
+//	}
 
 
 

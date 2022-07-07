@@ -47,6 +47,11 @@ public class StudentRestController {
 		return studentService.removeAllCourseFromStudent(studentCourseResponse);
 	}
 	
+	@PostMapping("/removeSomeCourseFromStudent")
+	public Student removeSomeCourseFromStudent(@RequestBody StudentCourseResponse studentCourseResponse) {
+		return studentService.removeSomeCourseFromStudent(studentCourseResponse);
+	}
+	
 //	@PostMapping("/removeCourseFromStudent")
 //	@Modifying      // to mark delete or update query
 //	@Query("delete course_id from student s where s.id =:student_Id join s.course_id id where id = :course_Id")   

@@ -1,6 +1,7 @@
 package com.rest.demo.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -159,21 +160,25 @@ public class StudentServiceImpl implements StudentService {
 
 		return studentRepository.save(theStudent);
 	}
-	
+
 	@Override
-	public Student removeOneCourseFromStudent(StudentCourseResponse studentCourseResponse) {
+	public Student removeSomeCourseFromStudent(StudentCourseResponse studentCourseResponse) {
 
 		Student theStudent = StudentWithCourse(studentCourseResponse);
-		Iterator<Course> courseId = ListOfStudentCources.iterator();
+		Set<Course> coursesToRemove = new HashSet<>();
+		
+		
+		for (Course course : ListOfStudentCources) {
+			for (int courseID : studentCourseResponse.getCourseId()) {
+				if(course.getId() == courseID) {
+					coursesToRemove.add(course);
+					System.out.println("Course ID to Remove: "+course.getId());
 
-		if (theStudent != null) {
-			
-			while (courseId.hasNext()) {
-				//theStudent.re
-				
+				}
 			}
-
 		}
+		theStudent.removeCourses(coursesToRemove);
+
 
 		return studentRepository.save(theStudent);
 	}

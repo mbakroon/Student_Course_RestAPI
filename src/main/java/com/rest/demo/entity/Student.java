@@ -162,5 +162,9 @@ public class Student {
 		}
 		
 	}
+	
+	public void removeCourse(int courseId) {
+		courses.remove(courseId);
+	}
 
 }
